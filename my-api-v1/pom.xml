@@ -3,9 +3,9 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>apigee</groupId>
-	<artifactId>my-api-v1</artifactId>
+	<artifactId>cats-api-v1</artifactId>
 	<version>-</version>
-	<name>my-api-${deployment.suffix}v1</name>
+	<name>cats-api-${deployment.suffix}v1</name>
 	<packaging>pom</packaging>
 
 	<pluginRepositories>

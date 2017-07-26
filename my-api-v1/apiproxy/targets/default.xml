@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <TargetEndpoint name="default">
-	<PreFlow/>
-	<Flows/>
-	<PostFlow/>
-	<HTTPTargetConnection>
-		<URL>http://httpbin.org</URL>
-	</HTTPTargetConnection>
+    <PreFlow>
+        <Request>
+            <Step>
+                <Name>JavaScript.MyJS</Name>
+            </Step>
+        </Request>
+    </PreFlow>
+    <Flows/>
+    <PostFlow/>
+    <HTTPTargetConnection>
+        <URL>https://sdavisdubai-trial-prod.apigee.net/v1/cats</URL>
+    </HTTPTargetConnection>
 </TargetEndpoint>

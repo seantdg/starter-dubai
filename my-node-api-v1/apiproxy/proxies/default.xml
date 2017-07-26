@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+	<PreFlow/>
+	<PostFlow/>
+	<Flows/>
+    <RouteRule name="node">
+        <TargetEndpoint>node</TargetEndpoint>
+    </RouteRule>    
+    <HTTPProxyConnection>
+        <BasePath>/starter-node-api</BasePath>
+        <VirtualHost>secure</VirtualHost>
+    </HTTPProxyConnection>
+</ProxyEndpoint>

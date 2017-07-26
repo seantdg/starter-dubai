@@ -1,13 +1,50 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ProxyEndpoint name="default">
-	<PreFlow/>
-	<Flows/>
-	<PostFlow/>
-	<RouteRule name="default">
-		<TargetEndpoint>default</TargetEndpoint>
-	</RouteRule>
-	<HTTPProxyConnection>
-		<BasePath>/api/v1</BasePath>
-		<VirtualHost>secure</VirtualHost>
-	</HTTPProxyConnection>
+    <FaultRules>
+        <FaultRule name="TrafficExceeded">
+            <Step>
+                <Name>Raise500</Name>
+                <!-- build a RaiseFault policy similar to that in the docs -->
+            </Step>
+            <Condition>fault.name == "SpikeArrestViolation"</Condition>
+            <!-- or QuotaViolation -->
+        </FaultRule>
+    </FaultRules>
+    <PreFlow>
+        <Request>
+            <Step>
+                <Name>SpikeArrest</Name>
+            </Step>
+            <Step>
+                <Name>APIKeyVerifier</Name>
+            </Step>
+			<Step>
+				<Name>JavaScript.MyJS</Name>
+			</Step>
+        </Request>
+    </PreFlow>
+    <Flows>
+        <Flow name="catsandkittens">
+            <Request>
+                <Step>
+                    <Name>ServiceCallout</Name>
+                </Step>
+            </Request>
+			<Response>
+				<Step>
+					<Name>JavaScript.MashupCats</Name>
+				</Step>
+			</Response>
+            <Condition>proxy.pathsuffix = "/cats" AND request.verb = "GET"</Condition>
+        </Flow>
+    </Flows>
+    <PostFlow/>
+    <RouteRule name="default">
+        <TargetEndpoint>default</TargetEndpoint>
+    </RouteRule>
+    <HTTPProxyConnection>
+        <BasePath>/cat-api/v1</BasePath>
+        <VirtualHost>secure</VirtualHost>
+        <VirtualHost>default</VirtualHost>
+    </HTTPProxyConnection>
 </ProxyEndpoint>

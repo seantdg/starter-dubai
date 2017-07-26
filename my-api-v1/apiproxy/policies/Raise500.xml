@@ -1,0 +1,10 @@
+<RaiseFault name="Raise500">
+ <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+ <FaultResponse>
+   <Set>
+     <Payload contentType="application/json">{"error":true}</Payload>
+     <StatusCode>418</StatusCode>
+     <ReasonPhrase>Im a Teapot</ReasonPhrase>
+   </Set>
+ </FaultResponse>
+</RaiseFault>

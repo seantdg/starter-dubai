@@ -1,0 +1,8 @@
+<ServiceCallout name='ServiceCallout'>
+    <Request variable="authenticationRequest"/>
+    <Response>KittensResponse</Response>
+    <Timeout>5000</Timeout>
+    <HTTPTargetConnection>
+      <URL>https://apibaas-trial.apigee.net/sdavisdubai-trial/sandbox/kittens</URL>
+    </HTTPTargetConnection>
+</ServiceCallout>
